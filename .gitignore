@@ -1,3 +1,7 @@
-./Rough/new.html
-./Rough/semiconductor-school.html
-Rough
+# Ignore Rough folder
+/Rough/
+
+# # Other ignores
+# node_modules/
+# .env
+# .vscode/
