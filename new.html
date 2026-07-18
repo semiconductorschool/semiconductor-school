@@ -57,6 +57,26 @@
       overflow-x: hidden;
       line-height: 1.6
     }
+   html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* keep your existing background: var(--chalk) */
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;   /* takes up remaining space, pushes footer down */
+}
+
+footer {
+  flex-shrink: 0;   /* stays pinned at the true bottom */
+}
 
     nav {
       position: fixed;
@@ -1544,6 +1564,7 @@
       margin-bottom: 2.5rem
     }
 
+    
     .track-tabs {
       display: flex;
       gap: 6px;
@@ -1601,6 +1622,21 @@
       margin-bottom: 2.5rem
     }
 
+@media (max-width:600px){
+
+    .track-header{
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .track-meta{
+        width:100%;
+        justify-content:flex-start;
+    }
+
+}
+
     .track-eyebrow {
       font-family: var(--mono);
       font-size: 10px;
@@ -1616,7 +1652,9 @@
       font-size: clamp(28px, 4vw, 48px);
       letter-spacing: -0.03em;
       line-height: 1;
-      color: var(--saffron)
+      color: var(--saffron);
+      word-break: break-word;
+    overflow-wrap: anywhere;
     }
 
     .track-tagline {
@@ -1934,9 +1972,29 @@
       color: var(--saffron)
     }
 
-    .foot-links {
+    /* .foot-links {
       display: flex;
       gap: 18px
+    } */
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      /* the actual fix */
+      gap: 18px;
+      row-gap: 10px;
+    }
+
+    @media (max-width: 700px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .foot-links {
+        gap: 12px;
+        row-gap: 10px;
+      }
     }
 
     .foot-links a {
@@ -1958,6 +2016,7 @@
       font-size: 10px;
       color: rgba(255, 255, 255, 0.18)
     }
+
 
     @media(max-width:900px) {
       nav ul {
@@ -2019,8 +2078,14 @@
       }
 
       .phases::before {
-        left: 15px
-      }
+  content: '';
+  position: absolute;
+  left: 20px;      /* was 19px */
+  top: 24px;
+  bottom: 24px;
+  width: 1px;
+  background: var(--chalk-2)
+}
 
       .roadmap-wrap {
         padding: 2rem 1.25rem 4rem
@@ -2897,7 +2962,8 @@
                   form</span></div>
               <div class="pb-row"><span class="pbr-k">Seats</span><span class="pbr-v">Limited · rolling basis</span>
               </div>
-              <a class="pb-cta js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE Cohort 2→</a>
+              <a class="pb-cta js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE Cohort
+                2→</a>
               <div class="pb-note">No payment now · commitment-free</div>
             </div>
           </div>
@@ -3026,7 +3092,8 @@
         <p class="reg-sub">Apply for RISE Cohort 2 through the official form to receive the full program details,
           scholarship information, and cohort updates.</p>
         <div class="reg-form">
-          <a class="reg-btn js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE Cohort 2</a>
+          <a class="reg-btn js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE Cohort
+            2</a>
         </div>
         <div class="reg-note" id="regNote">No spam · No commitment · Just RISE updates</div>
       </div>
@@ -3929,7 +3996,7 @@
             <div class="ic-title">Registered address</div>
             <div class="ic-body"> C-10, Jasola, New Delhi-25</div>
           </div>
-         
+
         </div>
         <h3 style="margin-top:2.5rem">For payment or refund queries</h3>
         <p>Email <strong>support@semiconductorschool.in</strong> with your registered email and transaction/order ID.
@@ -4236,41 +4303,40 @@
     </section>
     <section class="legal-sec">
       <div class="legal-wrap">
-  <p>
-    Refunds are available only before the scheduled cohort start date. Once the
-    cohort has started, no refunds will be provided under any circumstances.
-  </p>
+        <p>
+          Refunds are available only before the scheduled cohort start date. Once the
+          cohort has started, no refunds will be provided under any circumstances.
+        </p>
 
-  <h3>1. Before the Cohort Starts</h3>
-  <p>
-    Participants may request a refund before the official start date of the
-    scheduled cohort by contacting us at
-    <strong>info@semiconductorschool.co.in</strong>.
-  </p>
+        <h3>1. Before the Cohort Starts</h3>
+        <p>
+          Participants may request a refund before the official start date of the
+          scheduled cohort by contacting us at
+          <strong>info@semiconductorschool.co.in</strong>.
+        </p>
 
-  <h3>2. After the Cohort Starts</h3>
-  <p>
-    Once the scheduled cohort has commenced, all payments become
-    <strong>non-refundable</strong>. No refunds or partial refunds will be
-    issued for any reason, including non-attendance, withdrawal, scheduling
-    conflicts, or incomplete participation.
-  </p>
- <h3>4. Exceptional Circumstances</h3>
-  <p>
-    Semiconductor School reserves the right, at its sole discretion, to review
-    exceptional cases. However, submission of a request does not guarantee a
-    refund or any compensation.
-  </p>
-  <h3>3. Contact</h3>
-  <p>
-    For refund-related queries, please contact us at
-    <strong>info@semiconductorschool.co.in</strong> or visit our
-    <a onclick="switchPage('contact')"
-       style="color:var(--saffron);cursor:pointer">
-      Contact page
-    </a>.
-  </p>
-</div>
+        <h3>2. After the Cohort Starts</h3>
+        <p>
+          Once the scheduled cohort has commenced, all payments become
+          <strong>non-refundable</strong>. No refunds or partial refunds will be
+          issued for any reason, including non-attendance, withdrawal, scheduling
+          conflicts, or incomplete participation.
+        </p>
+        <h3>4. Exceptional Circumstances</h3>
+        <p>
+          Semiconductor School reserves the right, at its sole discretion, to review
+          exceptional cases. However, submission of a request does not guarantee a
+          refund or any compensation.
+        </p>
+        <h3>3. Contact</h3>
+        <p>
+          For refund-related queries, please contact us at
+          <strong>info@semiconductorschool.co.in</strong> or visit our
+          <a onclick="switchPage('contact')" style="color:var(--saffron);cursor:pointer">
+            Contact page
+          </a>.
+        </p>
+      </div>
     </section>
   </div>
 
