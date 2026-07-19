@@ -57,26 +57,30 @@
       overflow-x: hidden;
       line-height: 1.6
     }
-   html, body {
-  height: 100%;
-}
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* keep your existing background: var(--chalk) */
-}
+    html,
+    body {
+      height: 100%;
+    }
 
-.page.active {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto;   /* takes up remaining space, pushes footer down */
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      /* keep your existing background: var(--chalk) */
+    }
 
-footer {
-  flex-shrink: 0;   /* stays pinned at the true bottom */
-}
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+      /* takes up remaining space, pushes footer down */
+    }
+
+    footer {
+      flex-shrink: 0;
+      /* stays pinned at the true bottom */
+    }
 
     nav {
       position: fixed;
@@ -1564,7 +1568,7 @@ footer {
       margin-bottom: 2.5rem
     }
 
-    
+
     .track-tabs {
       display: flex;
       gap: 6px;
@@ -1622,20 +1626,20 @@ footer {
       margin-bottom: 2.5rem
     }
 
-@media (max-width:600px){
+    @media (max-width:600px) {
 
-    .track-header{
+      .track-header {
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
-    }
+      }
 
-    .track-meta{
-        width:100%;
-        justify-content:flex-start;
-    }
+      .track-meta {
+        width: 100%;
+        justify-content: flex-start;
+      }
 
-}
+    }
 
     .track-eyebrow {
       font-family: var(--mono);
@@ -1654,7 +1658,7 @@ footer {
       line-height: 1;
       color: var(--saffron);
       word-break: break-word;
-    overflow-wrap: anywhere;
+      overflow-wrap: anywhere;
     }
 
     .track-tagline {
@@ -2078,14 +2082,15 @@ footer {
       }
 
       .phases::before {
-  content: '';
-  position: absolute;
-  left: 20px;      /* was 19px */
-  top: 24px;
-  bottom: 24px;
-  width: 1px;
-  background: var(--chalk-2)
-}
+        content: '';
+        position: absolute;
+        left: 20px;
+        /* was 19px */
+        top: 24px;
+        bottom: 24px;
+        width: 1px;
+        background: var(--chalk-2)
+      }
 
       .roadmap-wrap {
         padding: 2rem 1.25rem 4rem
@@ -2568,6 +2573,35 @@ footer {
         width: 100%
       }
 
+      @media (max-width:600px) {
+        .nav-apply {
+          display: none;
+        }
+      }
+
+      .mobile-apply {
+        display: block;
+        margin: 20px;
+        padding: 12px 20px;
+        background: var(--saffron);
+        color: #fff;
+        border-radius: 999px;
+        text-align: center;
+        text-decoration: none;
+        font-family: var(--display);
+        font-weight: 600;
+      }
+
+      .mobile-apply {
+        display: none;
+      }
+
+      @media (max-width:768px) {
+        .mobile-apply {
+          display: block;
+        }
+      }
+
       nav ul li a {
         display: block;
         padding: 13px 8px;
@@ -2615,6 +2649,9 @@ footer {
       <li><a onclick="scrollToSection('scholarship')">Scholarship</a></li>
       <li><a id="nav-roadmaps" onclick="switchPage('roadmaps')">Roadmaps</a></li>
       <li><a id="nav-payment" onclick="switchPage('payment')">Pay Fees</a></li>
+      <a class="mobile-apply js-apply-link" href="#" target="_blank" rel="noopener noreferrer">
+        Apply for RISE →
+      </a>
     </ul>
     <a class="nav-apply js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE →</a>
   </nav>
@@ -2861,8 +2898,9 @@ footer {
             </div>
             <div class="info-card">
               <div class="ic-title">How to apply</div>
-              <div class="ic-body">The scholarship form is embedded inside registration. After approval, send the
-                matching Razorpay payment link manually for the selected scholarship tier.</div>
+              <div class="ic-body">The scholarship form is embedded inside registration. After approval,
+                you'll receive a scholarship coupon code. Apply it during checkout to claim your approved scholarship
+                discount.</div>
             </div>
 
             <div class="info-card">
@@ -3973,8 +4011,7 @@ footer {
     </section>
     <section class="legal-sec">
       <div class="legal-wrap">
-        <div class="legal-note">The address and phone number below are placeholders. Replace them with your verified
-          business contact details before submitting this site for payment-gateway review.</div>
+
         <div class="contact-grid">
           <div class="contact-card">
             <div class="ic-title">Email — general</div>
@@ -3999,7 +4036,7 @@ footer {
 
         </div>
         <h3 style="margin-top:2.5rem">For payment or refund queries</h3>
-        <p>Email <strong>support@semiconductorschool.in</strong> with your registered email and transaction/order ID.
+        <p>Email <strong>info@semiconductorschool.co.in</strong> with your registered email and transaction/order ID.
           See our <a onclick="switchPage('refund')" style="color:var(--saffron);cursor:pointer">Refund &amp;
             Cancellation Policy</a> for timelines.</p>
       </div>
@@ -4020,8 +4057,6 @@ footer {
     </section>
     <section class="legal-sec">
       <div class="legal-wrap">
-        <div class="legal-note">₹10,000 is an example fellowship value. Replace it with your actual amount before going
-          live — the figure shown here should exactly match what is charged at checkout.</div>
         <div class="pricing-card">
           <div class="eyebrow on-ink" style="margin-bottom:0">RISE Cohort 2 · Full Fellowship</div>
           <div class="pricing-fee">Total Fellowship Value: ₹10,000</div>
@@ -4039,7 +4074,7 @@ footer {
         <h3>Scholarships</h3>
         <p>
           A meaningful share of every cohort is fully or partially funded through our merit scholarship program.
-          Scholarships ranging from <strong>100% to 20%</strong> of the fellowship value are awarded based on the
+          Scholarships ranging from <strong>100% to 25%</strong> of the fellowship value are awarded based on the
           registration review and selection process. Fee waivers vary according to the scholarship tier granted.
           See the
           <a onclick="switchPage('rise');scrollToSection('scholarship')" style="color:var(--saffron);cursor:pointer">
@@ -4281,7 +4316,7 @@ footer {
 
         <h3>9. Governing law</h3>
         <p>These Terms are governed by the laws of India. Any disputes will be subject to the exclusive jurisdiction of
-          the courts at [City, State].</p>
+          the courts at Delhi,India.</p>
 
         <h3>10. Contact</h3>
         <p>Questions about these Terms can be sent to <strong>info@semiconductorschool.co.in</strong>.</p>
@@ -4415,7 +4450,7 @@ footer {
       <a onclick="switchPage('refund')">Refund Policy</a>
       <a class="foot-apply js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Apply for RISE Cohort →</a>
     </div>
-    <div class="foot-copy">© 2025 Semiconductor School</div>
+    <div class="foot-copy">© 2026 Semiconductor School</div>
   </footer>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
