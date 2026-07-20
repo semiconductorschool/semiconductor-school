@@ -4728,7 +4728,7 @@
         name: 'Semiconductor School',
         description: 'RISE Program — Enrollment Fee',
         order_id: order.orderId,
-        prefill: { name: order.name, email: order.email },
+        prefill: { name: order.name, email: order.email, contact: order.phone },
         theme: { color: '#0EA5E9' },
         handler: function (response) {
           var msg = document.getElementById('pay-now-msg');
