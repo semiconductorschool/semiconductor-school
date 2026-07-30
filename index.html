@@ -4753,8 +4753,8 @@
       document.getElementById('nav-rise').classList.toggle('active', page === 'rise');
       document.getElementById('nav-roadmaps').classList.toggle('active', page === 'roadmaps');
       document.getElementById('nav-payment').classList.toggle('active', page === 'payment');
-      const labels = { rise: 'RISE Program', roadmaps: 'Career Roadmaps', payment: 'Pay Fees', about: 'About Us', contact: 'Contact Us', pricing: 'Pricing', privacy: 'Privacy Policy', terms: 'Terms & Conditions', refund: 'Refund & Cancellation Policy' };
-      document.getElementById('nav-sub').textContent = labels[page] || 'RISE Program';
+      // const labels = { rise: 'RISE Program', roadmaps: 'Career Roadmaps', payment: 'Pay Fees', about: 'About Us', contact: 'Contact Us', pricing: 'Pricing', privacy: 'Privacy Policy', terms: 'Terms & Conditions', refund: 'Refund & Cancellation Policy' };
+      // document.getElementById('nav-sub').textContent = labels[page] || 'RISE Program';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(() => {
         document.querySelectorAll('#page-' + page + ' .reveal, #page-' + page + ' .rv').forEach(el => {
