@@ -2103,7 +2103,34 @@
 
     /* ===== Payment Page — Dark Theme ===== */
     #page-payment {
-      background: var(--ink)
+      position: relative;
+      overflow: hidden;
+    }
+
+    #page-payment .corner-shine {
+      position: absolute;
+      top: -140px;
+      left: -140px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+          rgba(14, 165, 233, 0.55) 0%,
+          rgba(37, 99, 235, 0.25) 40%,
+          transparent 82%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 600px) {
+      #page-payment .corner-shine {
+        width: 260px;
+        height: 260px;
+        top: -90px;
+        right: -90px;
+      }
     }
 
     #page-payment .sec {
@@ -2674,138 +2701,91 @@
       }
     }
 
+
+    /* ===========================
+   Partners Infinite Carousel
+=========================== */
+
+    .partners-sec {
+      overflow: hidden;
+    }
+
     .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      justify-items: center
+      overflow: hidden;
+      width: 100%;
+      margin: 50px 0;
+      position: relative;
+    }
+
+    .partners-track {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      width: max-content;
+      animation: partnerScroll 15s linear infinite;
+    }
+
+    .partners-track:hover {
+      animation-play-state: paused;
     }
 
     .partner-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .6rem;
-      width: 100%
-    }
-
-    .partner-card {
-      width: 100%;
-      max-width: 170px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .partner-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .partner-name {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--ink);
+      flex: 0 0 260px;
       text-align: center;
-      line-height: 1.3
-    }
-
-    @media(max-width:900px) {
-      .partners-grid {
-        gap: .75rem
-      }
-
-      .partner-card {
-        max-width: 90px
-      }
-    }
-
-    @media(max-width:600px) {
-      .partners-grid {
-        gap: .5rem
-      }
-
-      .partner-card {
-        max-width: 70px
-      }
-
-      .partner-name {
-        font-size: 11px
-      }
-    }
-
-    .partner-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .6rem;
-      width: 100%;
-      transition: transform .4s ease;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .partner-item:nth-child(2) {
-      animation-delay: .5s;
-    }
-
-    .partner-item:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    .partner-item:nth-child(4) {
-      animation-delay: 1.5s;
-    }
-
-    .partner-item:hover {
-      transform: translateY(-10px);
     }
 
     .partner-card {
-      width: 100%;
-      max-width: 170px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      overflow: hidden;
+      width: 150px;
+      height: 150px;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform .35s ease,
-        box-shadow .35s ease;
-    }
-
-    .partner-card:hover {
-      transform: scale(1.08);
-      box-shadow: 0 20px 45px rgba(55, 205, 255, .35);
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
     }
 
     .partner-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s ease;
+      max-width: 70%;
+      max-height: 70%;
+      object-fit: contain;
     }
 
-    .partner-card:hover img {
-      transform: scale(1.08);
+    .partner-name {
+      margin-top: 18px;
+      font-size: 20px;
+      font-weight: 600;
     }
 
-    @keyframes float {
+    @keyframes partnerScroll {
 
-      0%,
-      100% {
-        transform: translateY(0);
+      from {
+        transform: translateX(0);
       }
 
-      50% {
-        transform: translateY(-8px);
+      to {
+        transform: translateX(-50%);
       }
+
+    }
+
+    @media(max-width:768px) {
+
+      .partner-item {
+        flex: 0 0 200px;
+      }
+
+      .partner-card {
+        width: 120px;
+        height: 120px;
+      }
+
+      .partners-track {
+        gap: 25px;
+        animation-duration: 16s;
+      }
+
     }
   </style>
 </head>
@@ -3135,12 +3115,13 @@
     </section>
 
     <!-- PARTNERS -->
-    <section class="sec partners-sec" id="partners">
+    <!-- <section class="sec partners-sec" id="partners">
       <div class="wrap">
         <div class="eyebrow">Backed by</div>
         <h2 class="h2">Our partners</h2>
         <p class="lead">Organizations supporting the RISE mission</p>
         <div class="partners-grid reveal">
+          
           <div class="partner-item">
             <div class="partner-card">
               <img src="./beyond_vichaar_logo.jpeg" alt="Beyond Vichaar">
@@ -3171,8 +3152,89 @@
           href="https://docs.google.com/forms/d/e/1FAIpQLSdXwj_RMf-Alu9vusrg5-leoBpGBf7CZ_00fKFaGRsIPaJEhg/viewform?usp=header"
           target="_blank" rel="noopener noreferrer">Join us as a partner →</a>
       </div>
-    </section>
+    </section> -->
+    <section class="sec partners-sec" id="partners">
+      <div class="wrap">
 
+        <div class="eyebrow">Backed by</div>
+        <h2 class="h2">Our partners</h2>
+        <p class="lead">Organizations supporting the RISE mission</p>
+
+        <div class="partners-grid reveal">
+
+          <div class="partners-track">
+
+            <!-- Original -->
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./beyond_vichaar_logo.jpeg" alt="Beyond Vichaar">
+              </div>
+              <div class="partner-name">Beyond Vichaar</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./emberisai_logo.jpeg" alt="Emberis AI">
+              </div>
+              <div class="partner-name">Emberis AI</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./logo.png" alt="Semiconductor School">
+              </div>
+              <div class="partner-name">Semiconductor School</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./Ignytion full logo.png" alt="Ignytion">
+              </div>
+              <div class="partner-name">Ignytion io</div>
+            </div>
+
+            <!-- Duplicate (Required for Infinite Scroll) -->
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./beyond_vichaar_logo.jpeg" alt="Beyond Vichaar">
+              </div>
+              <div class="partner-name">Beyond Vichaar</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./emberisai_logo.jpeg" alt="Emberis AI">
+              </div>
+              <div class="partner-name">Emberis AI</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./logo.png" alt="Semiconductor School">
+              </div>
+              <div class="partner-name">Semiconductor School</div>
+            </div>
+
+            <div class="partner-item">
+              <div class="partner-card">
+                <img src="./Ignytion full logo.png" alt="Ignytion">
+              </div>
+              <div class="partner-name">Ignytion io</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <a class="btn-primary"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdXwj_RMf-Alu9vusrg5-leoBpGBf7CZ_00fKFaGRsIPaJEhg/viewform?usp=header"
+          target="_blank" rel="noopener noreferrer">
+          Join us as a partner →
+        </a>
+
+      </div>
+    </section>
     <section class="sec outcomes-sec" id="outcomes">
       <div class="wrap">
         <div class="outcomes-layout">
@@ -4607,6 +4669,7 @@
   </div>
 
   <div class="page" id="page-payment">
+    <div class="corner-shine"></div>
 
     <!-- 
     <section class="sec">
