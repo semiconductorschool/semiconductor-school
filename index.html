@@ -2140,12 +2140,13 @@
       border-color: rgba(14, 165, 233, .25)
     }
 
+    /* Card heading — was 17px, screenshot shows a much larger title */
     #page-payment .pay-title {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 17px;
+      font-size: 24px;
       color: #fff;
-      margin-bottom: .3rem;
+      margin-bottom: .35rem;
       letter-spacing: -0.01em
     }
 
@@ -2153,26 +2154,36 @@
       color: var(--cyan)
     }
 
+    /* Subtitle under the title */
     #page-payment .pay-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       color: rgba(255, 255, 255, .5);
       line-height: 1.6
     }
 
+    /* Field labels (FULL NAME / APPLICATION ID / EMAIL) — slightly bigger + bolder */
     #page-payment .pay-label {
       font-family: var(--mono);
-      font-size: 10px;
-      color: rgba(255, 255, 255, .35);
-      letter-spacing: .05em;
+      font-weight: 600;
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, .4);
+      letter-spacing: .06em;
       text-transform: uppercase;
       display: block;
       margin-bottom: 6px
     }
 
+    /* "from your email" style hint next to Application ID label — no underline, just a note */
+    #page-payment .pay-field-hint {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .3);
+      font-style: italic
+    }
+
     #page-payment .pay-input {
       width: 100%;
       font-family: var(--body);
-      font-size: 14px;
+      font-size: 14.5px;
       padding: 11px 14px;
       border-radius: 8px;
       border: 1.5px solid rgba(255, 255, 255, .12);
@@ -2193,8 +2204,8 @@
     #page-payment .pay-btn {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 14px;
-      padding: 12px;
+      font-size: 14.5px;
+      padding: 13px;
       border-radius: 100px;
       border: none;
       cursor: pointer;
@@ -2331,6 +2342,44 @@
       font-size: 13px;
       color: rgba(255, 255, 255, .45);
       margin-top: 2px
+    }
+
+    .pay-layout {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .pay-trust {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      margin-top: 2rem
+    }
+
+    .pay-trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6
+    }
+
+    .pay-trust-dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      margin-top: 6px
+    }
+
+    @media(max-width: 900px) {
+      .pay-layout {
+        grid-template-columns: 1fr
+      }
     }
 
     /* ══════════════════════════════
@@ -2627,7 +2676,7 @@
 
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
@@ -2689,6 +2738,73 @@
 
       .partner-name {
         font-size: 11px
+      }
+    }
+
+    .partner-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      width: 100%;
+      transition: transform .4s ease;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .partner-item:nth-child(2) {
+      animation-delay: .5s;
+    }
+
+    .partner-item:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .partner-item:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+
+    .partner-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .partner-card {
+      width: 100%;
+      max-width: 170px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .partner-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 20px 45px rgba(55, 205, 255, .35);
+    }
+
+    .partner-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .partner-card:hover img {
+      transform: scale(1.08);
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
       }
     }
   </style>
@@ -3043,6 +3159,12 @@
               <img src="./logo.png" alt="Semiconductor School">
             </div>
             <div class="partner-name">Semiconductor School</div>
+          </div>
+          <div class="partner-item">
+            <div class="partner-card">
+              <img src="./Ignytion full logo.png" alt="Ignytion">
+            </div>
+            <div class="partner-name">Ignytion io</div>
           </div>
         </div>
         <a class="btn-primary"
@@ -4486,32 +4608,89 @@
 
   <div class="page" id="page-payment">
 
+    <!-- 
     <section class="sec">
       <div class="wrap" style="max-width:480px">
-        <div id="pay-gate-card" class="pay-card">
-          <div class="pay-title">Access your payment</div>
-          <div class="pay-desc" style="margin-bottom:1.5rem">Enter the details from your congratulations email.</div>
+        
+          <div id="pay-gate-card" class="pay-card">  
+            <div class="pay-title">Access your payment</div>
+            <div class="pay-desc" style="margin-bottom:1.5rem">Enter the details from your congratulations email.</div>
 
-          <div style="display:flex;flex-direction:column;gap:1rem">
-            <div>
-              <label class="pay-label">Full Name</label>
-              <input id="pay-fullname" type="text" class="pay-input" placeholder="Your full name">
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              <div>
+                <label class="pay-label">Full Name</label>
+                <input id="pay-fullname" type="text" class="pay-input" placeholder="Your full name">
+              </div>
+              <div>
+                <label class="pay-label">Application ID</label>
+                <input id="pay-appid" type="text" class="pay-input" placeholder="e.g. RISE-0042">
+              </div>
+              <div>
+                <label class="pay-label">Email</label>
+                <input id="pay-email" type="email" class="pay-input" placeholder="you@example.com">
+              </div>
+              <button id="pay-gate-btn" class="pay-btn" style="margin-top:.5rem" onclick="doAccess()">Continue to
+                Payment</button>
+              <div id="pay-gate-msg" class="pay-msg" style="display:none"></div>
             </div>
-            <div>
-              <label class="pay-label">Application ID</label>
-              <input id="pay-appid" type="text" class="pay-input" placeholder="e.g. RISE-0042">
-            </div>
-            <div>
-              <label class="pay-label">Email</label>
-              <input id="pay-email" type="email" class="pay-input" placeholder="you@example.com">
-            </div>
-            <button id="pay-gate-btn" class="pay-btn" style="margin-top:.5rem" onclick="doAccess()">Continue to
-              Payment</button>
-            <div id="pay-gate-msg" class="pay-msg" style="display:none"></div>
           </div>
+      </div>
+    </section> -->
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="pay-layout">
+
+          <div class="pay-intro rv">
+            <div class="hero-badge"><span class="badge-dot"></span>COHORT-02 &middot; 2026</div>
+            <h1 class="h2 light" style="font-size:clamp(45px,5.5vw,55px)">
+              The <br>
+              <span style="color:#37CDFF;">Semiconductor</span><br>
+              School<br>
+              Fellowship.
+            </h1>
+            <p class="lead light">You made it through. Confirm your seat by completing your fellowship fee payment
+              &mdash;
+              apply your scholarship coupon and enroll in seconds.</p>
+          </div>
+
+          <div id="pay-gate-card" class="pay-card">
+            <div class="pay-title">Access your payment</div>
+            <div class="pay-desc" style="margin-bottom:1.5rem">Use the details from your congratulations email.</div>
+
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              <div>
+                <label class="pay-label">Full Name</label>
+                <input id="pay-fullname" type="text" class="pay-input" placeholder="Aarav Sharma">
+              </div>
+
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <label class="pay-label" style="margin-bottom:0">Application ID</label>
+                  <span class="pay-field-hint">from your email</span>
+                </div>
+                <input id="pay-appid" type="text" class="pay-input" placeholder="RISE2-0001">
+              </div>
+
+              <div>
+                <label class="pay-label">Email</label>
+                <input id="pay-email" type="email" class="pay-input" placeholder="you@example.com">
+              </div>
+
+              <button id="pay-gate-btn" class="pay-btn" style="margin-top:.5rem" onclick="doAccess()">Continue to
+                Payment &rarr;</button>
+              <div id="pay-gate-msg" class="pay-msg" style="display:none"></div>
+            </div>
+
+
+
+          </div>
+
         </div>
       </div>
     </section>
+
+
 
     <section class="sec" id="pay-result-sec" style="display:none">
       <div class="wrap" style="max-width:1000px">
@@ -4563,6 +4742,7 @@
   </footer>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
     const APPLY_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeEYhLfRHTw2BIF2NGyxSWkQnS_EyXJ7PrAfNzexv5HwW2ebw/viewform?usp=dialog";
     document.querySelectorAll('.js-apply-link').forEach(el => { el.href = APPLY_FORM_URL; });
@@ -4869,25 +5049,84 @@
       rzp.open();
     }
 
-    function downloadReceipt() {
-      var text =
-        'RISE Cohort 2 — Payment Receipt\n' +
-        '--------------------------------\n' +
-        'Application ID: ' + appState.applicationId + '\n' +
-        'Name: ' + appState.fullName + '\n' +
-        'Email: ' + appState.email + '\n' +
-        'Scholarship Tier: ' + appState.scholarshipTier + '\n' +
-        'Order ID: ' + appState.razorpayOrderId + '\n' +
-        'Payment ID: ' + appState.razorpayPaymentId + '\n' +
-        'Status: Paid\n';
+    // function downloadReceipt() {
+    //   var text =
+    //     'RISE Cohort 2 — Payment Receipt\n' +
+    //     '--------------------------------\n' +
+    //     'Application ID: ' + appState.applicationId + '\n' +
+    //     'Name: ' + appState.fullName + '\n' +
+    //     'Email: ' + appState.email + '\n' +
+    //     'Scholarship Tier: ' + appState.scholarshipTier + '\n' +
+    //     'Order ID: ' + appState.razorpayOrderId + '\n' +
+    //     'Payment ID: ' + appState.razorpayPaymentId + '\n' +
+    //     'Status: Paid\n';
 
-      var blob = new Blob([text], { type: 'text/plain' });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = 'RISE-Receipt-' + appState.applicationId + '.txt';
-      a.click();
-      URL.revokeObjectURL(url);
+    //   var blob = new Blob([text], { type: 'text/plain' });
+    //   var url = URL.createObjectURL(blob);
+    //   var a = document.createElement('a');
+    //   a.href = url;
+    //   a.download = 'RISE-Receipt-' + appState.applicationId + '.txt';
+    //   a.click();
+    //   URL.revokeObjectURL(url);
+    // }
+    function downloadReceipt() {
+      var { jsPDF } = window.jspdf;
+      var doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+      var pageWidth = doc.internal.pageSize.getWidth();
+      var margin = 50;
+      var y = 60;
+
+      // Header
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(18);
+      doc.setTextColor(37, 99, 235); // saffron/blue
+      doc.text('Semiconductor School', margin, y);
+
+      y += 22;
+      doc.setFontSize(13);
+      doc.setTextColor(20, 20, 20);
+      doc.text('RISE Cohort 2 — Payment Receipt', margin, y);
+
+      y += 10;
+      doc.setDrawColor(220, 220, 220);
+      doc.line(margin, y, pageWidth - margin, y);
+
+      y += 30;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(11);
+      doc.setTextColor(90, 90, 90);
+
+      var row = function (label, value) {
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(60, 60, 60);
+        doc.text(label, margin, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(20, 20, 20);
+        doc.text(String(value || '—'), margin + 160, y);
+        y += 22;
+      };
+
+      row('Application ID:', appState.applicationId);
+      row('Full Name:', appState.fullName);
+      row('Email:', appState.email);
+      row('Scholarship Tier:', appState.scholarshipTier);
+      row('Order ID:', appState.razorpayOrderId);
+      row('Payment ID:', appState.razorpayPaymentId);
+      row('Status:', 'Paid');
+      row('Date:', new Date().toLocaleString('en-IN'));
+
+      y += 15;
+      doc.setDrawColor(220, 220, 220);
+      doc.line(margin, y, pageWidth - margin, y);
+
+      y += 25;
+      doc.setFontSize(9);
+      doc.setTextColor(150, 150, 150);
+      doc.text('This is a system-generated receipt for RISE Cohort 2 enrollment.', margin, y);
+      doc.text('For queries, contact info@semiconductorschool.co.in', margin, y + 14);
+
+      doc.save('RISE-Receipt-' + appState.applicationId + '.pdf');
     }
   </script>
 </body>
