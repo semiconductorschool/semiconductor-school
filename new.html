@@ -2787,6 +2787,151 @@
       }
 
     }
+
+    .team-sec {
+      background: var(--chalk)
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      max-width: 960px;
+      margin: 2.5rem auto 0
+    }
+
+    .team-card {
+      --tc: var(--saffron);
+      --tc-dim: var(--saffron-dim);
+      background: var(--white);
+      border: 1.5px solid var(--chalk-2);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      padding-bottom: 1rem;
+      transition: border-color .2s, box-shadow .2s
+    }
+
+    .team-card.c-cyan {
+      --tc: var(--cyan);
+      --tc-dim: var(--cyan-dim)
+    }
+
+    .team-card.c-violet {
+      --tc: var(--violet);
+      --tc-dim: var(--violet-dim)
+    }
+
+    .team-card:hover {
+      border-color: var(--tc);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--tc) 8%, transparent)
+    }
+
+    .team-photo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: var(--tc-dim);
+      overflow: hidden
+    }
+
+    .team-photo-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 42px;
+      color: var(--tc);
+      opacity: .3
+    }
+
+    .team-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .team-info-card {
+      position: relative;
+      margin: -26px 10px 0;
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 11px 13px 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, .16)
+    }
+
+    .team-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18.5px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 2px
+    }
+
+    .team-role {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--tc);
+      letter-spacing: .02em;
+      line-height: 1.4
+    }
+
+    .team-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: var(--chalk);
+      border: 1px solid var(--chalk-2);
+      color: #4A4A62;
+      letter-spacing: .02em;
+      margin-top: .55rem
+    }
+
+    .team-links {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-top: .6rem;
+      padding-top: .6rem;
+      border-top: 1px solid var(--chalk-2)
+    }
+
+    .team-link {
+      display: inline-flex;
+      color: var(--slate);
+      transition: color .15s
+    }
+
+    .team-link:hover {
+      color: var(--tc)
+    }
+
+    .team-link svg {
+      display: block;
+      width: 18px;
+      height: 18px
+    }
+
+    @media(max-width:900px) {
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 520px
+      }
+    }
+
+    @media(max-width:600px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px
+      }
+    }
   </style>
 </head>
 
@@ -3114,45 +3259,134 @@
       </div>
     </section>
 
-    <!-- PARTNERS -->
-    <!-- <section class="sec partners-sec" id="partners">
+    <section class="sec team-sec" id="team">
       <div class="wrap">
-        <div class="eyebrow">Backed by</div>
-        <h2 class="h2">Our partners</h2>
-        <p class="lead">Organizations supporting the RISE mission</p>
-        <div class="partners-grid reveal">
-          
-          <div class="partner-item">
-            <div class="partner-card">
-              <img src="./beyond_vichaar_logo.jpeg" alt="Beyond Vichaar">
+        <div class="eyebrow">The team</div>
+        <h2 class="h2">Meet the team.</h2>
+        <p class="lead">The people building the next generation of chip talent — making semiconductor education
+          practical, accessible, and industry-ready.</p>
+        <div class="team-grid reveal">
+          <div class="team-card c-saffron">
+            <div class="team-photo-wrap">
+              <div class="team-photo-fallback">SS</div>
+              <img class="team-photo" src="./saad.jpeg" alt="Saad Siddiqui" onerror="this.style.display='none'">
             </div>
-            <div class="partner-name">Beyond Vichaar</div>
+            <div class="team-info-card">
+              <div class="team-name">Saad Siddiqui</div>
+              <div class="team-role">Founder · Semiconductor School · Mentor<br>co-founder @Beyond Vichaar</div>
+              <span class="team-tag">AI Chip Designer</span>
+              <div class="team-links">
+                <a class="team-link"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=saads.semiconductorschool@gmail.com"
+                  aria-label="Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" width="16" height="16">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" />
+                  </svg>
+                </a>
+                <a class="team-link" href="https://www.linkedin.com/in/saadsiddiqui02/" target="_blank"
+                  rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor"
+                      stroke-width="1.8" />
+                    <circle cx="7.5" cy="8" r="1.3" />
+                    <rect x="6.3" y="10.5" width="2.4" height="7.5" rx="0.5" />
+                    <path
+                      d="M11.5 10.5h2.3v1.2c.5-.8 1.4-1.4 2.7-1.4 2 0 3 1.3 3 3.7v4h-2.4v-3.5c0-1-.4-1.7-1.4-1.7-.8 0-1.3.5-1.5 1.1-.1.2-.1.4-.1.7v3.4h-2.4z" />
+                  </svg>
+                </a>
+                <a class="team-link" href="https://github.com/the-semiconductor-academy" target="_blank"
+                  rel="noopener noreferrer" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.85 0 .28.18.6.69.5A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="partner-item">
-            <div class="partner-card">
-              <img src="./emberisai_logo.jpeg" alt="Emberis AI">
+          <div class="team-card c-cyan">
+            <div class="team-photo-wrap">
+              <div class="team-photo-fallback">ST</div>
+              <img class="team-photo" src="./samiksha.jpeg" alt="Samiksha Tiwari" onerror="this.style.display='none'">
             </div>
-            <div class="partner-name">Emberis AI</div>
+            <div class="team-info-card">
+              <div class="team-name">Samiksha Tiwari</div>
+              <div class="team-role">Co-founder · Semiconductor School · Mentor<br>Founder @ Beyond Vichaar </div>
+              <span class="team-tag">Hardware Security Researcher</span>
+              <div class="team-links">
+                <a class="team-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=samikshatiwari2003@gmail.com"
+                  aria-label="Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" width="16" height="16">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" />
+                  </svg>
+                </a>
+                <a class="team-link" href="https://www.linkedin.com/in/~samiksha-tiwari/" target="_blank"
+                  rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor"
+                      stroke-width="1.8" />
+                    <circle cx="7.5" cy="8" r="1.3" />
+                    <rect x="6.3" y="10.5" width="2.4" height="7.5" rx="0.5" />
+                    <path
+                      d="M11.5 10.5h2.3v1.2c.5-.8 1.4-1.4 2.7-1.4 2 0 3 1.3 3 3.7v4h-2.4v-3.5c0-1-.4-1.7-1.4-1.7-.8 0-1.3.5-1.5 1.1-.1.2-.1.4-.1.7v3.4h-2.4z" />
+                  </svg>
+                </a>
+                <a class="team-link" href=" https://github.com/the-semiconductor-academy" target="_blank"
+                  rel="noopener noreferrer" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.85 0 .28.18.6.69.5A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-
-          <div class="partner-item">
-            <div class="partner-card">
-              <img src="./logo.png" alt="Semiconductor School">
+          <div class="team-card c-violet">
+            <div class="team-photo-wrap">
+              <div class="team-photo-fallback">VW</div>
+              <img class="team-photo" src="./vidhi.jpeg" alt="Vidhi Waghela" onerror="this.style.display='none'">
             </div>
-            <div class="partner-name">Semiconductor School</div>
-          </div>
-          <div class="partner-item">
-            <div class="partner-card">
-              <img src="./Ignytion full logo.png" alt="Ignytion">
+            <div class="team-info-card">
+              <div class="team-name">Vidhi Waghela</div>
+              <div class="team-role">Co-founder · Business Development<br>Founder @emberis.ai </div>
+              <span class="team-tag">Neuromorphic Computing</span>
+              <div class="team-links">
+                <a class="team-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=vidhiwaghela99@gmail.com"
+                  aria-label="Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" width="16" height="16">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" />
+                  </svg>
+                </a>
+                <a class="team-link" href="https://www.linkedin.com/in/vidhi-waghela-434663198/" target="_blank"
+                  rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor"
+                      stroke-width="1.8" />
+                    <circle cx="7.5" cy="8" r="1.3" />
+                    <rect x="6.3" y="10.5" width="2.4" height="7.5" rx="0.5" />
+                    <path
+                      d="M11.5 10.5h2.3v1.2c.5-.8 1.4-1.4 2.7-1.4 2 0 3 1.3 3 3.7v4h-2.4v-3.5c0-1-.4-1.7-1.4-1.7-.8 0-1.3.5-1.5 1.1-.1.2-.1.4-.1.7v3.4h-2.4z" />
+                  </svg>
+                </a>
+                <a class="team-link" href="https://github.com/Vidhi1290" target="_blank" rel="noopener noreferrer"
+                  aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.85 0 .28.18.6.69.5A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div class="partner-name">Ignytion io</div>
           </div>
         </div>
-        <a class="btn-primary"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdXwj_RMf-Alu9vusrg5-leoBpGBf7CZ_00fKFaGRsIPaJEhg/viewform?usp=header"
-          target="_blank" rel="noopener noreferrer">Join us as a partner →</a>
       </div>
-    </section> -->
+    </section>
     <section class="sec partners-sec" id="partners">
       <div class="wrap">
 
@@ -4308,7 +4542,7 @@
         <div class="contact-grid">
           <div class="contact-card">
             <div class="ic-title">Email — general</div>
-            <div class="ic-body"> info@semiconductorschool.co.in</div>
+            <div class="ic-body"> info@semiconductorschool.co.in<br>info.semiconductorschool@gmail.com</div>
           </div>
           <!-- <div class="contact-card">
             <div class="ic-title">Email — support</div>
@@ -4329,7 +4563,8 @@
 
         </div>
         <h3 style="margin-top:2.5rem">For payment or refund queries</h3>
-        <p>Email <strong>info@semiconductorschool.co.in</strong> with your registered email and transaction/order ID.
+        <p>Email <strong>info@semiconductorschool.co.in</strong> & <strong>info.semiconductorschool@gmail.com</strong>
+          with your registered email and transaction/order ID.
           See our <a onclick="switchPage('refund')" style="color:var(--saffron);cursor:pointer">Refund &amp;
             Cancellation Policy</a> for timelines.</p>
       </div>
@@ -4612,7 +4847,8 @@
           the courts at Delhi,India.</p>
 
         <h3>10. Contact</h3>
-        <p>Questions about these Terms can be sent to <strong>info@semiconductorschool.co.in</strong>.</p>
+        <p>Questions about these Terms can be sent to <strong>info@semiconductorschool.co.in</strong> &
+          <strong>info.semiconductorschool@gmail.com</strong>.</p>
       </div>
     </section>
   </div>
@@ -4640,7 +4876,8 @@
         <p>
           Participants may request a refund before the official start date of the
           scheduled cohort by contacting us at
-          <strong>info@semiconductorschool.co.in</strong>.
+          <strong>info@semiconductorschool.co.in</strong><br>
+          <strong>info.semiconductorschool@gmail.com</strong>.
         </p>
 
         <h3>2. After the Cohort Starts</h3>
@@ -4659,7 +4896,8 @@
         <h3>3. Contact</h3>
         <p>
           For refund-related queries, please contact us at
-          <strong>info@semiconductorschool.co.in</strong> or visit our
+          <strong>info@semiconductorschool.co.in</strong> & <strong>info.semiconductorschool@gmail.com</strong> or visit
+          our
           <a onclick="switchPage('contact')" style="color:var(--saffron);cursor:pointer">
             Contact page
           </a>.
