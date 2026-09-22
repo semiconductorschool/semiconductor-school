@@ -2932,574 +2932,575 @@
         max-width: 320px
       }
     }
- /* ═══════════ TESTIMONIALS (compact) ═══════════ */
-  .tm-sec {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    flex-shrink: 0;
-    padding: 3rem 2rem 4.5rem;
-    text-align: center;
-    color: #fff;
-    background: linear-gradient(180deg, #03050C 0%, #060D24 48%, #04070F 100%);
-    border-top: 1px solid rgba(255, 255, 255, .06);
-  }
- 
-  /* ---- background (static) ---- */
-  .tm-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-  }
- 
-  .tm-glow {
-    position: absolute;
-    left: 50%;
-    top: 52%;
-    width: min(780px, 140vw);
-    height: 480px;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse at center, rgba(60, 105, 230, .34) 0%, rgba(37, 70, 170, .16) 38%, transparent 68%);
-  }
- 
-  /* ---- heading ---- */
-  .tm-wrap {
-    position: relative;
-    max-width: 860px;
-    margin: 0 auto
-  }
- 
-  .tm-pill {
-    display: inline-block;
-    font-family: var(--mono, 'IBM Plex Mono', monospace);
-    font-size: 10px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .8);
-    border: 1px solid rgba(255, 255, 255, .4);
-    border-radius: 100px;
-    padding: 5px 13px;
-    margin-bottom: 1.1rem;
-    background: rgba(255, 255, 255, .03);
-  }
- 
-  .tm-title {
-    font-family: var(--display, 'Bricolage Grotesque', sans-serif);
-    font-weight: 500;
-    font-size: clamp(26px, 4vw, 42px);
-    letter-spacing: -.035em;
-    line-height: 1.08;
-    text-shadow: 0 0 28px rgba(110, 150, 255, .35);
-    margin-bottom: .7rem;
-  }
- 
-  .tm-sub {
-    font-family: var(--body, 'IBM Plex Sans', sans-serif);
-    font-size: clamp(13px, 1.4vw, 15px);
-    font-weight: 300;
-    color: rgba(255, 255, 255, .62);
-    max-width: 420px;
-    margin: 0 auto;
-    line-height: 1.55;
-  }
- 
-  /* ---- carousel layout ---- */
-  .tm-carousel {
-    display: grid;
-    grid-template-columns: 34px minmax(0, 500px) 34px;
-    gap: clamp(12px, 2.4vw, 26px);
-    align-items: center;
-    justify-content: center;
-    margin-top: 2.6rem;
-  }
- 
-  .tm-stage {
-    position: relative;
-    outline: none;
-    touch-action: pan-y;
-    -webkit-user-select: none;
-    user-select: none;
-    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform .6s cubic-bezier(.2, .8, .2, 1);
-  }
- 
-  .tm-stage:focus-visible {
-    outline: 2px solid rgba(125, 180, 255, .85);
-    outline-offset: 12px;
-    border-radius: 16px;
-  }
- 
-  /* the two "frames" peeking behind the card */
-  .tm-frame {
-    position: absolute;
-    left: 2.4%;
-    right: 2.4%;
-    top: 0;
-    bottom: 0;
-    border-radius: 12px;
-    border: 1.5px solid rgba(155, 175, 230, .42);
-    background: linear-gradient(180deg, rgba(70, 95, 170, .28), rgba(20, 32, 75, .55));
-    box-shadow: 0 0 32px rgba(70, 110, 230, .18);
-    z-index: 0;
-  }
- 
-  .tm-frame-top {
-    transform: perspective(800px) translateY(-10px) rotateX(5deg)
-  }
- 
-  .tm-frame-bot {
-    transform: perspective(800px) translateY(10px) rotateX(-5deg)
-  }
- 
-  .tm-stage.tm-nudge .tm-frame-top {
-    animation: tmFT .9s cubic-bezier(.2, .8, .2, 1)
-  }
- 
-  .tm-stage.tm-nudge .tm-frame-bot {
-    animation: tmFB .9s cubic-bezier(.2, .8, .2, 1)
-  }
- 
-  @keyframes tmFT {
-    35% {
-      transform: perspective(800px) translateY(-20px) rotateX(9deg)
+
+    /* ═══════════ TESTIMONIALS (compact) ═══════════ */
+    .tm-sec {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      flex-shrink: 0;
+      padding: 3rem 2rem 4.5rem;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(180deg, #03050C 0%, #060D24 48%, #04070F 100%);
+      border-top: 1px solid rgba(255, 255, 255, .06);
     }
-  }
- 
-  @keyframes tmFB {
-    35% {
-      transform: perspective(800px) translateY(20px) rotateX(-9deg)
+
+    /* ---- background (static) ---- */
+    .tm-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
     }
-  }
- 
-  /* cards all share one grid cell → stage height = tallest card */
-  .tm-cards {
-    position: relative;
-    z-index: 1;
-    display: grid
-  }
- 
-  .tm-card {
-    grid-area: 1 / 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.15rem;
-    text-align: left;
-    border-radius: 12px;
-    padding: clamp(1.1rem, 2.6vw, 1.75rem) clamp(1.05rem, 2.8vw, 2rem);
-    background: linear-gradient(165deg, #F3F6FB 0%, #DFE6F2 100%);
-    border: 1.5px solid rgba(255, 255, 255, .75);
-    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, .55), 0 0 55px rgba(105, 150, 255, .22);
-    color: #0B1226;
-    opacity: 0;
-    pointer-events: none;
-    will-change: transform, opacity;
-    transition: transform .75s cubic-bezier(.2, .9, .25, 1), opacity .5s ease;
-  }
- 
-  /* cursor-following sheen */
-  .tm-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .8), transparent 60%);
-    opacity: 0;
-    transition: opacity .4s;
-  }
- 
-  .tm-carousel:hover .tm-card[data-pos="0"]::after {
-    opacity: .5
-  }
- 
-  .tm-card[data-pos="0"] {
-    opacity: 1;
-    transform: none;
-    z-index: 5;
-    transition: transform .85s cubic-bezier(.2, .9, .25, 1), opacity .55s ease .08s;
-  }
- 
-  .tm-card[data-pos="1"] {
-    transform: translate3d(0, 20px, 0) scale(.93);
-    z-index: 4
-  }
- 
-  .tm-card[data-pos="-1"] {
-    transform: translate3d(-60px, -4px, 0) rotate(-4deg) scale(.96);
-    z-index: 6
-  }
- 
-  .tm-card[data-pos="far-r"] {
-    transform: translate3d(0, 32px, 0) scale(.9);
-    z-index: 1
-  }
- 
-  .tm-card[data-pos="far-l"] {
-    transform: translate3d(-60px, -4px, 0) rotate(-4deg) scale(.96);
-    z-index: 1
-  }
- 
-  .tm-quote {
-    font-family: var(--body, 'IBM Plex Sans', sans-serif);
-    font-weight: 400;
-    font-size: clamp(14px, 1.6vw, 16.5px);
-    line-height: 1.55;
-    letter-spacing: -.005em;
-    color: #0B1226;
-  }
- 
-  .tm-w {
-    display: inline-block
-  }
- 
-  .tm-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: .7rem 1.8rem
-  }
- 
-  .tm-who {
-    display: flex;
-    align-items: center;
-    gap: .65rem
-  }
- 
-  .tm-avatar {
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-family: var(--display, 'Bricolage Grotesque', sans-serif);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: .02em;
-    color: #fff;
-    background: linear-gradient(135deg, var(--a), var(--b));
-    box-shadow: 0 5px 11px -3px rgba(20, 40, 110, .55), 0 0 0 2px rgba(255, 255, 255, .9);
-  }
- 
-  .tm-id {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25
-  }
- 
-  .tm-name {
-    font-family: var(--body, 'IBM Plex Sans', sans-serif);
-    font-weight: 500;
-    font-size: 13px;
-    color: #0B1226
-  }
- 
-  .tm-role {
-    font-family: var(--body, 'IBM Plex Sans', sans-serif);
-    font-size: 11.5px;
-    color: #4D5A78
-  }
- 
-  .tm-rating {
-    display: flex;
-    gap: 2px
-  }
- 
-  .tm-star {
-    width: 14px;
-    height: 14px;
-    fill: #F2B233;
-    filter: drop-shadow(0 1px 1px rgba(150, 95, 0, .35));
-  }
- 
-  /* orchestrated entrance — only on the active card, only once the section is visible */
-  .tm-sec.tm-ready .tm-card.is-active .tm-w {
-    animation: tmWord .7s cubic-bezier(.2, .8, .2, 1) both;
-    animation-delay: calc(var(--i) * 24ms + 260ms);
-  }
- 
-  .tm-sec.tm-ready .tm-card.is-active .tm-meta {
-    animation: tmUp .7s cubic-bezier(.2, .8, .2, 1) .9s both
-  }
- 
-  .tm-sec.tm-ready .tm-card.is-active .tm-star {
-    animation: tmPop .55s cubic-bezier(.3, 1.6, .5, 1) both;
-    animation-delay: calc(.95s + var(--s) * 70ms);
-  }
- 
-  @keyframes tmWord {
-    from {
+
+    .tm-glow {
+      position: absolute;
+      left: 50%;
+      top: 52%;
+      width: min(780px, 140vw);
+      height: 480px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(60, 105, 230, .34) 0%, rgba(37, 70, 170, .16) 38%, transparent 68%);
+    }
+
+    /* ---- heading ---- */
+    .tm-wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto
+    }
+
+    .tm-pill {
+      display: inline-block;
+      font-family: var(--mono, 'IBM Plex Mono', monospace);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .8);
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 100px;
+      padding: 5px 13px;
+      margin-bottom: 1.1rem;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .tm-title {
+      font-family: var(--display, 'Bricolage Grotesque', sans-serif);
+      font-weight: 500;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: -.035em;
+      line-height: 1.08;
+      text-shadow: 0 0 28px rgba(110, 150, 255, .35);
+      margin-bottom: .7rem;
+    }
+
+    .tm-sub {
+      font-family: var(--body, 'IBM Plex Sans', sans-serif);
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 300;
+      color: rgba(255, 255, 255, .62);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ---- carousel layout ---- */
+    .tm-carousel {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 500px) 34px;
+      gap: clamp(12px, 2.4vw, 26px);
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.6rem;
+    }
+
+    .tm-stage {
+      position: relative;
+      outline: none;
+      touch-action: pan-y;
+      -webkit-user-select: none;
+      user-select: none;
+      transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .tm-stage:focus-visible {
+      outline: 2px solid rgba(125, 180, 255, .85);
+      outline-offset: 12px;
+      border-radius: 16px;
+    }
+
+    /* the two "frames" peeking behind the card */
+    .tm-frame {
+      position: absolute;
+      left: 2.4%;
+      right: 2.4%;
+      top: 0;
+      bottom: 0;
+      border-radius: 12px;
+      border: 1.5px solid rgba(155, 175, 230, .42);
+      background: linear-gradient(180deg, rgba(70, 95, 170, .28), rgba(20, 32, 75, .55));
+      box-shadow: 0 0 32px rgba(70, 110, 230, .18);
+      z-index: 0;
+    }
+
+    .tm-frame-top {
+      transform: perspective(800px) translateY(-10px) rotateX(5deg)
+    }
+
+    .tm-frame-bot {
+      transform: perspective(800px) translateY(10px) rotateX(-5deg)
+    }
+
+    .tm-stage.tm-nudge .tm-frame-top {
+      animation: tmFT .9s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .tm-stage.tm-nudge .tm-frame-bot {
+      animation: tmFB .9s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    @keyframes tmFT {
+      35% {
+        transform: perspective(800px) translateY(-20px) rotateX(9deg)
+      }
+    }
+
+    @keyframes tmFB {
+      35% {
+        transform: perspective(800px) translateY(20px) rotateX(-9deg)
+      }
+    }
+
+    /* cards all share one grid cell → stage height = tallest card */
+    .tm-cards {
+      position: relative;
+      z-index: 1;
+      display: grid
+    }
+
+    .tm-card {
+      grid-area: 1 / 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.15rem;
+      text-align: left;
+      border-radius: 12px;
+      padding: clamp(1.1rem, 2.6vw, 1.75rem) clamp(1.05rem, 2.8vw, 2rem);
+      background: linear-gradient(165deg, #F3F6FB 0%, #DFE6F2 100%);
+      border: 1.5px solid rgba(255, 255, 255, .75);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, .55), 0 0 55px rgba(105, 150, 255, .22);
+      color: #0B1226;
       opacity: 0;
-      transform: translateY(7px);
-      filter: blur(4px)
+      pointer-events: none;
+      will-change: transform, opacity;
+      transition: transform .75s cubic-bezier(.2, .9, .25, 1), opacity .5s ease;
     }
- 
-    to {
+
+    /* cursor-following sheen */
+    .tm-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .8), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    .tm-carousel:hover .tm-card[data-pos="0"]::after {
+      opacity: .5
+    }
+
+    .tm-card[data-pos="0"] {
       opacity: 1;
       transform: none;
-      filter: blur(0)
+      z-index: 5;
+      transition: transform .85s cubic-bezier(.2, .9, .25, 1), opacity .55s ease .08s;
     }
-  }
- 
-  @keyframes tmUp {
-    from {
-      opacity: 0;
-      transform: translateY(8px)
+
+    .tm-card[data-pos="1"] {
+      transform: translate3d(0, 20px, 0) scale(.93);
+      z-index: 4
     }
- 
-    to {
-      opacity: 1;
-      transform: none
+
+    .tm-card[data-pos="-1"] {
+      transform: translate3d(-60px, -4px, 0) rotate(-4deg) scale(.96);
+      z-index: 6
     }
-  }
- 
-  @keyframes tmPop {
-    from {
-      opacity: 0;
-      transform: scale(.2) rotate(-40deg)
+
+    .tm-card[data-pos="far-r"] {
+      transform: translate3d(0, 32px, 0) scale(.9);
+      z-index: 1
     }
- 
-    to {
-      opacity: 1;
-      transform: none
+
+    .tm-card[data-pos="far-l"] {
+      transform: translate3d(-60px, -4px, 0) rotate(-4deg) scale(.96);
+      z-index: 1
     }
-  }
- 
-  /* ---- arrows ---- */
-  .tm-arrow {
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    color: rgba(255, 255, 255, .85);
-    background: rgba(255, 255, 255, .03);
-    border: 1px solid rgba(255, 255, 255, .42);
-    transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
-  }
- 
-  .tm-arrow svg {
-    width: 15px;
-    height: 15px;
-    transition: transform .2s
-  }
- 
-  .tm-arrow:hover {
-    background: rgba(255, 255, 255, .12);
-    border-color: #fff;
-    box-shadow: 0 0 18px rgba(120, 165, 255, .45);
-    transform: scale(1.08)
-  }
- 
-  .tm-arrow:active {
-    transform: scale(.94)
-  }
- 
-  .tm-arrow:focus-visible {
-    outline: 2px solid #7DB4FF;
-    outline-offset: 3px
-  }
- 
-  .tm-prev:hover svg {
-    transform: translateX(-2px)
-  }
- 
-  .tm-next:hover svg {
-    transform: translateX(2px)
-  }
- 
-  /* ---- progress (doubles as autoplay timer + navigation) ---- */
-  .tm-progress {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 2rem
-  }
- 
-  .tm-seg {
-    position: relative;
-    width: 20px;
-    height: 16px;
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
-  }
- 
-  .tm-seg::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 2px;
-    margin-top: -1px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, .16);
-    transition: background .2s;
-  }
- 
-  .tm-seg:hover::before {
-    background: rgba(255, 255, 255, .32)
-  }
- 
-  .tm-seg:focus-visible {
-    outline: 2px solid #7DB4FF;
-    outline-offset: 2px;
-    border-radius: 4px
-  }
- 
-  .tm-fill {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    height: 2px;
-    width: 0;
-    margin-top: -1px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #0EA5E9, #9BD8FF);
-    box-shadow: 0 0 8px rgba(14, 165, 233, .6);
-  }
- 
-  .tm-seg.done .tm-fill {
-    width: 100%
-  }
- 
-  .tm-seg.active .tm-fill {
-    animation: tmFill var(--tm-dur, 6500ms) linear forwards
-  }
- 
-  .tm-sec.tm-paused .tm-seg.active .tm-fill {
-    animation-play-state: paused
-  }
- 
-  @keyframes tmFill {
-    from {
-      width: 0
+
+    .tm-quote {
+      font-family: var(--body, 'IBM Plex Sans', sans-serif);
+      font-weight: 400;
+      font-size: clamp(14px, 1.6vw, 16.5px);
+      line-height: 1.55;
+      letter-spacing: -.005em;
+      color: #0B1226;
     }
- 
-    to {
-      width: 100%
+
+    .tm-w {
+      display: inline-block
     }
-  }
- 
-  /* ---- footer copy + CTA ---- */
-  .tm-foot {
-    font-family: var(--body, 'IBM Plex Sans', sans-serif);
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: .01em;
-    color: rgba(255, 255, 255, .58);
-    margin-top: 1.5rem;
-  }
- 
-  .tm-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 1.1rem;
-    font-family: var(--display, 'Bricolage Grotesque', sans-serif);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: -.01em;
-    color: #fff;
-    text-decoration: none;
-    padding: 9px 20px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, .7);
-    background: rgba(255, 255, 255, .04);
-    transition: background .25s, color .25s, transform .2s, box-shadow .25s;
-  }
- 
-  .tm-cta:hover {
-    background: #fff;
-    color: #05070D;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px -6px rgba(120, 165, 255, .55)
-  }
- 
-  .tm-cta:focus-visible {
-    outline: 2px solid #7DB4FF;
-    outline-offset: 3px
-  }
- 
-  /* ---- responsive ---- */
-  @media (max-width:720px) {
-    .tm-sec {
-      padding: 3rem 1.25rem 3.5rem
-    }
- 
-    .tm-carousel {
-      grid-template-columns: 1fr 1fr;
-      gap: 1.4rem 12px;
-      margin-top: 2.2rem
-    }
- 
-    .tm-stage {
-      grid-column: 1 / -1;
-      grid-row: 1
-    }
- 
-    .tm-prev {
-      grid-column: 1;
-      grid-row: 2;
-      justify-self: end
-    }
- 
-    .tm-next {
-      grid-column: 2;
-      grid-row: 2;
-      justify-self: start
-    }
- 
-    .tm-frame-top {
-      transform: perspective(800px) translateY(-8px) rotateX(5deg)
-    }
- 
-    .tm-frame-bot {
-      transform: perspective(800px) translateY(8px) rotateX(-5deg)
-    }
- 
-    .tm-progress {
-      margin-top: 1.2rem;
-      gap: 3px
-    }
- 
-    .tm-seg {
-      width: 17px
-    }
- 
+
     .tm-meta {
-      gap: .6rem 1.3rem
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .7rem 1.8rem
     }
-  }
- 
-  /* ---- reduced motion: no autoplay ---- */
-  @media (prefers-reduced-motion:reduce) {
- 
-    .tm-card,
-    .tm-stage,
-    .tm-frame {
-      transition-duration: .01s !important
+
+    .tm-who {
+      display: flex;
+      align-items: center;
+      gap: .65rem
     }
- 
-    .tm-sec .tm-w,
-    .tm-sec .tm-meta,
-    .tm-sec .tm-star,
-    .tm-stage .tm-frame {
-      animation: none !important
+
+    .tm-avatar {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--display, 'Bricolage Grotesque', sans-serif);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: #fff;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      box-shadow: 0 5px 11px -3px rgba(20, 40, 110, .55), 0 0 0 2px rgba(255, 255, 255, .9);
     }
- 
-    .tm-seg.active .tm-fill {
-      animation: none;
+
+    .tm-id {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25
+    }
+
+    .tm-name {
+      font-family: var(--body, 'IBM Plex Sans', sans-serif);
+      font-weight: 500;
+      font-size: 13px;
+      color: #0B1226
+    }
+
+    .tm-role {
+      font-family: var(--body, 'IBM Plex Sans', sans-serif);
+      font-size: 11.5px;
+      color: #4D5A78
+    }
+
+    .tm-rating {
+      display: flex;
+      gap: 2px
+    }
+
+    .tm-star {
+      width: 14px;
+      height: 14px;
+      fill: #F2B233;
+      filter: drop-shadow(0 1px 1px rgba(150, 95, 0, .35));
+    }
+
+    /* orchestrated entrance — only on the active card, only once the section is visible */
+    .tm-sec.tm-ready .tm-card.is-active .tm-w {
+      animation: tmWord .7s cubic-bezier(.2, .8, .2, 1) both;
+      animation-delay: calc(var(--i) * 24ms + 260ms);
+    }
+
+    .tm-sec.tm-ready .tm-card.is-active .tm-meta {
+      animation: tmUp .7s cubic-bezier(.2, .8, .2, 1) .9s both
+    }
+
+    .tm-sec.tm-ready .tm-card.is-active .tm-star {
+      animation: tmPop .55s cubic-bezier(.3, 1.6, .5, 1) both;
+      animation-delay: calc(.95s + var(--s) * 70ms);
+    }
+
+    @keyframes tmWord {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+        filter: blur(4px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+        filter: blur(0)
+      }
+    }
+
+    @keyframes tmUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes tmPop {
+      from {
+        opacity: 0;
+        transform: scale(.2) rotate(-40deg)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ---- arrows ---- */
+    .tm-arrow {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: rgba(255, 255, 255, .85);
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .42);
+      transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+    }
+
+    .tm-arrow svg {
+      width: 15px;
+      height: 15px;
+      transition: transform .2s
+    }
+
+    .tm-arrow:hover {
+      background: rgba(255, 255, 255, .12);
+      border-color: #fff;
+      box-shadow: 0 0 18px rgba(120, 165, 255, .45);
+      transform: scale(1.08)
+    }
+
+    .tm-arrow:active {
+      transform: scale(.94)
+    }
+
+    .tm-arrow:focus-visible {
+      outline: 2px solid #7DB4FF;
+      outline-offset: 3px
+    }
+
+    .tm-prev:hover svg {
+      transform: translateX(-2px)
+    }
+
+    .tm-next:hover svg {
+      transform: translateX(2px)
+    }
+
+    /* ---- progress (doubles as autoplay timer + navigation) ---- */
+    .tm-progress {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 2rem
+    }
+
+    .tm-seg {
+      position: relative;
+      width: 20px;
+      height: 16px;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .tm-seg::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      margin-top: -1px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, .16);
+      transition: background .2s;
+    }
+
+    .tm-seg:hover::before {
+      background: rgba(255, 255, 255, .32)
+    }
+
+    .tm-seg:focus-visible {
+      outline: 2px solid #7DB4FF;
+      outline-offset: 2px;
+      border-radius: 4px
+    }
+
+    .tm-fill {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 2px;
+      width: 0;
+      margin-top: -1px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #0EA5E9, #9BD8FF);
+      box-shadow: 0 0 8px rgba(14, 165, 233, .6);
+    }
+
+    .tm-seg.done .tm-fill {
       width: 100%
     }
-  }
+
+    .tm-seg.active .tm-fill {
+      animation: tmFill var(--tm-dur, 6500ms) linear forwards
+    }
+
+    .tm-sec.tm-paused .tm-seg.active .tm-fill {
+      animation-play-state: paused
+    }
+
+    @keyframes tmFill {
+      from {
+        width: 0
+      }
+
+      to {
+        width: 100%
+      }
+    }
+
+    /* ---- footer copy + CTA ---- */
+    .tm-foot {
+      font-family: var(--body, 'IBM Plex Sans', sans-serif);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: .01em;
+      color: rgba(255, 255, 255, .58);
+      margin-top: 1.5rem;
+    }
+
+    .tm-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1.1rem;
+      font-family: var(--display, 'Bricolage Grotesque', sans-serif);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: -.01em;
+      color: #fff;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      background: rgba(255, 255, 255, .04);
+      transition: background .25s, color .25s, transform .2s, box-shadow .25s;
+    }
+
+    .tm-cta:hover {
+      background: #fff;
+      color: #05070D;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -6px rgba(120, 165, 255, .55)
+    }
+
+    .tm-cta:focus-visible {
+      outline: 2px solid #7DB4FF;
+      outline-offset: 3px
+    }
+
+    /* ---- responsive ---- */
+    @media (max-width:720px) {
+      .tm-sec {
+        padding: 3rem 1.25rem 3.5rem
+      }
+
+      .tm-carousel {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem 12px;
+        margin-top: 2.2rem
+      }
+
+      .tm-stage {
+        grid-column: 1 / -1;
+        grid-row: 1
+      }
+
+      .tm-prev {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: end
+      }
+
+      .tm-next {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start
+      }
+
+      .tm-frame-top {
+        transform: perspective(800px) translateY(-8px) rotateX(5deg)
+      }
+
+      .tm-frame-bot {
+        transform: perspective(800px) translateY(8px) rotateX(-5deg)
+      }
+
+      .tm-progress {
+        margin-top: 1.2rem;
+        gap: 3px
+      }
+
+      .tm-seg {
+        width: 17px
+      }
+
+      .tm-meta {
+        gap: .6rem 1.3rem
+      }
+    }
+
+    /* ---- reduced motion: no autoplay ---- */
+    @media (prefers-reduced-motion:reduce) {
+
+      .tm-card,
+      .tm-stage,
+      .tm-frame {
+        transition-duration: .01s !important
+      }
+
+      .tm-sec .tm-w,
+      .tm-sec .tm-meta,
+      .tm-sec .tm-star,
+      .tm-stage .tm-frame {
+        animation: none !important
+      }
+
+      .tm-seg.active .tm-fill {
+        animation: none;
+        width: 100%
+      }
+    }
   </style>
 </head>
 
@@ -3957,56 +3958,57 @@
       </div>
     </section>
 
-<section class="tm-sec tm-paused" id="testimonials" aria-labelledby="tm-title">
- 
-  <!-- shared star symbol -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="tmStar" viewBox="0 0 24 24">
-      <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" />
-    </symbol>
-  </svg>
- 
-  <div class="tm-bg" aria-hidden="true">
-    <div class="tm-glow"></div>
-  </div>
- 
-  <div class="tm-wrap">
-    <div class="tm-head reveal">
-      <span class="tm-pill">Testimonials</span>
-      <h2 class="tm-title" id="tm-title">Mastering the RISC-V<br>Architecture</h2>
-      <p class="tm-sub">Acquire hands-on skills in open-source RISC-V processor design and programming.</p>
-    </div>
- 
-    <div class="tm-carousel reveal" id="tmCarousel" role="region" aria-roledescription="carousel"
-      aria-label="Participant testimonials">
-      <button class="tm-arrow tm-prev" type="button" aria-label="Previous testimonial">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M15 6l-6 6 6 6" />
-        </svg>
-      </button>
- 
-      <div class="tm-stage" id="tmStage" tabindex="0" aria-label="Use left and right arrow keys to change testimonial">
-        <div class="tm-frame tm-frame-top" aria-hidden="true"></div>
-        <div class="tm-frame tm-frame-bot" aria-hidden="true"></div>
-        <div class="tm-cards" id="tmCards"></div>
+    <section class="tm-sec tm-paused" id="testimonials" aria-labelledby="tm-title">
+
+      <!-- shared star symbol -->
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="tmStar" viewBox="0 0 24 24">
+          <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" />
+        </symbol>
+      </svg>
+
+      <div class="tm-bg" aria-hidden="true">
+        <div class="tm-glow"></div>
       </div>
- 
-      <button class="tm-arrow tm-next" type="button" aria-label="Next testimonial">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 6l6 6-6 6" />
-        </svg>
-      </button>
-    </div>
- 
-    <div class="tm-progress" id="tmProgress"></div>
- 
-    <p class="tm-foot">6-week live cohort · 100% open-source tools · scholarships available</p>
-    <!-- <a class="tm-cta js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Get Started</a> -->
-  </div>
-</section>
- 
+
+      <div class="tm-wrap">
+        <div class="tm-head reveal">
+          <span class="tm-pill">Testimonials</span>
+          <h2 class="tm-title" id="tm-title">Mastering the RISC-V<br>Architecture</h2>
+          <p class="tm-sub">Acquire hands-on skills in open-source RISC-V processor design and programming.</p>
+        </div>
+
+        <div class="tm-carousel reveal" id="tmCarousel" role="region" aria-roledescription="carousel"
+          aria-label="Participant testimonials">
+          <button class="tm-arrow tm-prev" type="button" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+
+          <div class="tm-stage" id="tmStage" tabindex="0"
+            aria-label="Use left and right arrow keys to change testimonial">
+            <div class="tm-frame tm-frame-top" aria-hidden="true"></div>
+            <div class="tm-frame tm-frame-bot" aria-hidden="true"></div>
+            <div class="tm-cards" id="tmCards"></div>
+          </div>
+
+          <button class="tm-arrow tm-next" type="button" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="tm-progress" id="tmProgress"></div>
+
+        <p class="tm-foot">6-week live cohort · 100% open-source tools · scholarships available</p>
+        <!-- <a class="tm-cta js-apply-link" href="#" target="_blank" rel="noopener noreferrer">Get Started</a> -->
+      </div>
+    </section>
+
 
 
     <section class="sec partners-sec" id="partners">
@@ -4036,8 +4038,8 @@
             </div> -->
 
             <div class="partner-item">
-              <div class="partner-card">
-                <img src="./logo.png" alt="Semiconductor School">
+              <div class="partner-card" style="background-color: rgb(244, 240, 237);">
+                <img src="./SS_Official Logo Dark - Copy.png" alt="Semiconductor School" style="filter: invert(1);">
               </div>
               <div class="partner-name">Semiconductor School</div>
             </div>
@@ -4066,8 +4068,8 @@
             </div> -->
 
             <div class="partner-item">
-              <div class="partner-card">
-                <img src="./logo.png" alt="Semiconductor School">
+              <div class="partner-card" style="background-color: rgb(244, 240, 237);">
+                <img src="./SS_Official Logo Dark - Copy.png" alt="Semiconductor School" style="filter: invert(1);">
               </div>
               <div class="partner-name">Semiconductor School</div>
             </div>
@@ -6033,213 +6035,233 @@
       doc.save('RISE-Receipt-' + appState.applicationId + '.pdf');
     }
 
-     (function () {
-    var root = document.getElementById('testimonials');
-    if (!root) return;
- 
-    /* ─────────────────────────────────────────────────────────
-       PLACEHOLDER CONTENT — replace with real, consented feedback.
-       Fields: quote, name (shown as "First L."), role, stars (1–5).
-       Add/remove entries freely; the carousel adapts to any count ≥ 3.
-       ───────────────────────────────────────────────────────── */
-    var DATA = [
-      { name: 'Aarav S.', role: 'Final-year ECE student', stars: 5,
-        quote: 'Week two is where it clicked. I stopped memorising RV32I encodings and started seeing why the datapath looks the way it does. By week six my core was running real software.' },
-      { name: 'Priya M.', role: '3rd-year EEE undergraduate', stars: 5,
-        quote: 'Hazards and forwarding always felt like textbook trivia. Debugging my own pipeline in GTKWave made them real.' },
-      { name: 'Rohan V.', role: 'Design verification engineer', stars: 5,
-        quote: 'I verify designs at work, but I had never built the thing I verify. Writing the core myself changed how I read RTL.' },
-      { name: 'Sneha R.', role: 'Embedded software engineer', stars: 5,
-        quote: 'The caches and virtual memory week was dense but well paced. The recordings saved me when a session clashed with my shift.' },
-      { name: 'Karan T.', role: '2nd-year CS student', stars: 5,
-        quote: 'Everything runs on free tools: Verilator, Spike, QEMU. I did the whole thing on WSL on my own laptop, with no lab access needed.' },
-      { name: 'Ishita D.', role: 'M.Tech VLSI student', stars: 5,
-        quote: 'Tomasulo and register renaming finally made sense once we walked through them cycle by cycle. Clearer than the textbook, and I have read the textbook twice.' },
-      { name: 'Mohit J.', role: 'Hardware engineer, early-stage startup', stars: 5,
-        quote: 'Office hours were the real value. Ask about your own waveform and get a straight answer within the week.' },
-      { name: 'Ananya P.', role: '1st-year ECE student', stars: 5,
-        quote: 'I had no processor design experience and worried I would be lost. The first week rebuilt logic design from the ground up, so nobody got left behind.' },
-      { name: 'Vikram N.', role: 'Co-founder, chip startup', stars: 5,
-        quote: 'Our team needed one shared understanding of the ISA and the memory system. This got us there faster than reading specs alone.' },
-      { name: 'Fatima Z.', role: 'PhD researcher, computer architecture', stars: 5,
-        quote: 'I left with a capstone core I can put on GitHub and walk through in an interview. That is exactly what I wanted from it.' }
-    ];
- 
-    var DURATION = 6500;   // ms each testimonial stays before auto-advancing
-    var PAL = [['#2563EB', '#0EA5E9'], ['#4F46E5', '#2563EB'], ['#0D9488', '#0EA5E9'], ['#4F46E5', '#0EA5E9']];
- 
-    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    var n = DATA.length, active = 0;
- 
-    var carousel = root.querySelector('#tmCarousel');
-    var stage = root.querySelector('#tmStage');
-    var cardsEl = root.querySelector('#tmCards');
-    var prog = root.querySelector('#tmProgress');
-    var sparks = root.querySelector('#tmSparks');
-    root.style.setProperty('--tm-dur', DURATION + 'ms');
- 
-    function esc(s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-      });
-    }
-    function initials(name) {
-      var p = name.replace(/\./g, '').trim().split(/\s+/);
-      return ((p[0] || '').charAt(0) + (p[1] || '').charAt(0)).toUpperCase();
-    }
- 
-    /* ---------- build ---------- */
-    var cardsHTML = '', segsHTML = '';
-    DATA.forEach(function (t, i) {
-      var words = ('\u201C' + t.quote + '\u201D').split(' ');
-      var q = words.map(function (w, k) {
-        return '<span class="tm-w" style="--i:' + k + '">' + esc(w) + '</span>';
-      }).join(' ');
-      var c = PAL[i % PAL.length], stars = '', total = Math.max(1, Math.min(5, t.stars || 5));
-      for (var s = 0; s < total; s++) stars += '<svg class="tm-star" style="--s:' + s + '" viewBox="0 0 24 24" aria-hidden="true"><use href="#tmStar"/></svg>';
- 
-      cardsHTML +=
-        '<figure class="tm-card" data-pos="far-r" aria-hidden="true">' +
-        '<blockquote class="tm-quote">' + q + '</blockquote>' +
-        '<figcaption class="tm-meta">' +
-        '<div class="tm-who"><span class="tm-avatar" style="--a:' + c[0] + ';--b:' + c[1] + '" aria-hidden="true">' + esc(initials(t.name)) + '</span>' +
-        '<span class="tm-id"><span class="tm-name">' + esc(t.name) + '</span><span class="tm-role">' + esc(t.role) + '</span></span></div>' +
-        '<div class="tm-rating" role="img" aria-label="' + total + ' out of 5 stars">' + stars + '</div>' +
-        '</figcaption></figure>';
- 
-      segsHTML += '<button class="tm-seg" type="button" data-i="' + i + '" aria-label="Show testimonial ' + (i + 1) + ' of ' + n + '"><span class="tm-fill"></span></button>';
-    });
-    cardsEl.innerHTML = cardsHTML;
-    prog.innerHTML = segsHTML;
- 
-    var cards = [].slice.call(cardsEl.children);
-    var segs = [].slice.call(prog.children);
- 
-    /* ---------- state → DOM ---------- */
-    function layout() {
-      cards.forEach(function (el, i) {
-        var off = ((i - active) % n + n) % n;
-        if (off > n / 2) off -= n;
-        var pos = off === 0 ? '0' : off === 1 ? '1' : off === -1 ? '-1' : off > 1 ? 'far-r' : 'far-l';
-        el.setAttribute('data-pos', pos);
-        el.classList.toggle('is-active', off === 0);
-        el.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
-      });
-      segs.forEach(function (s, k) {
-        s.classList.toggle('active', k === active);
-        s.classList.toggle('done', k < active);
-        if (k === active) s.setAttribute('aria-current', 'true'); else s.removeAttribute('aria-current');
-      });
-    }
-    function nudge() {
-      if (reduce) return;
-      stage.classList.remove('tm-nudge');
-      void stage.offsetWidth;            // restart the frame animation
-      stage.classList.add('tm-nudge');
-    }
-    function go(i, manual) {
-      i = (i + n) % n;
-      if (i === active) return;
-      active = i;
-      cardsEl.setAttribute('aria-live', manual ? 'polite' : 'off');
-      layout();
-      nudge();
-    }
- 
-    /* ---------- controls ---------- */
-    root.querySelector('.tm-prev').addEventListener('click', function () { go(active - 1, true); });
-    root.querySelector('.tm-next').addEventListener('click', function () { go(active + 1, true); });
-    prog.addEventListener('click', function (e) {
-      var b = e.target.closest && e.target.closest('.tm-seg');
-      if (b) go(parseInt(b.getAttribute('data-i'), 10), true);
-    });
-    // the active progress bar IS the autoplay timer: when it finishes, advance
-    prog.addEventListener('animationend', function (e) {
-      if (e.animationName === 'tmFill') go(active + 1, false);
-    });
-    stage.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { go(active + 1, true); e.preventDefault(); }
-      else if (e.key === 'ArrowLeft') { go(active - 1, true); e.preventDefault(); }
-    });
- 
-    // swipe / drag
-    var sx = null, sy = 0;
-    stage.addEventListener('pointerdown', function (e) {
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
-      sx = e.clientX; sy = e.clientY;
-    });
-    stage.addEventListener('pointerup', function (e) {
-      if (sx === null) return;
-      var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) go(active + (dx < 0 ? 1 : -1), true);
-    });
-    stage.addEventListener('pointercancel', function () { sx = null; });
- 
-    /* ---------- autoplay pause rules ---------- */
-    var f = { hover: false, focus: false, off: true, hid: document.hidden };
-    function sync() { root.classList.toggle('tm-paused', f.hover || f.focus || f.off || f.hid); }
-    carousel.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { f.hover = true; sync(); } });
-    carousel.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { f.hover = false; sync(); } });
-    root.addEventListener('focusin', function (e) {
-      try { if (e.target.matches(':focus-visible')) f.focus = true; } catch (_) { }
-      sync();
-    });
-    root.addEventListener('focusout', function () { f.focus = false; sync(); });
-    document.addEventListener('visibilitychange', function () { f.hid = document.hidden; sync(); });
- 
-    // start (and first-play the entrance) only when the section is on screen
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          f.off = !en.isIntersecting;
-          if (en.isIntersecting) root.classList.add('tm-ready');
-          sync();
+    (function () {
+      var root = document.getElementById('testimonials');
+      if (!root) return;
+
+      /* ─────────────────────────────────────────────────────────
+         PLACEHOLDER CONTENT — replace with real, consented feedback.
+         Fields: quote, name (shown as "First L."), role, stars (1–5).
+         Add/remove entries freely; the carousel adapts to any count ≥ 3.
+         ───────────────────────────────────────────────────────── */
+      var DATA = [
+        {
+          name: 'Aarav S.', role: 'Final-year ECE student', stars: 5,
+          quote: 'Week two is where it clicked. I stopped memorising RV32I encodings and started seeing why the datapath looks the way it does. By week six my core was running real software.'
+        },
+        {
+          name: 'Priya M.', role: '3rd-year EEE undergraduate', stars: 5,
+          quote: 'Hazards and forwarding always felt like textbook trivia. Debugging my own pipeline in GTKWave made them real.'
+        },
+        {
+          name: 'Rohan V.', role: 'Design verification engineer', stars: 5,
+          quote: 'I verify designs at work, but I had never built the thing I verify. Writing the core myself changed how I read RTL.'
+        },
+        {
+          name: 'Sneha R.', role: 'Embedded software engineer', stars: 5,
+          quote: 'The caches and virtual memory week was dense but well paced. The recordings saved me when a session clashed with my shift.'
+        },
+        {
+          name: 'Karan T.', role: '2nd-year CS student', stars: 5,
+          quote: 'Everything runs on free tools: Verilator, Spike, QEMU. I did the whole thing on WSL on my own laptop, with no lab access needed.'
+        },
+        {
+          name: 'Ishita D.', role: 'M.Tech VLSI student', stars: 5,
+          quote: 'Tomasulo and register renaming finally made sense once we walked through them cycle by cycle. Clearer than the textbook, and I have read the textbook twice.'
+        },
+        {
+          name: 'Mohit J.', role: 'Hardware engineer, early-stage startup', stars: 5,
+          quote: 'Office hours were the real value. Ask about your own waveform and get a straight answer within the week.'
+        },
+        {
+          name: 'Ananya P.', role: '1st-year ECE student', stars: 5,
+          quote: 'I had no processor design experience and worried I would be lost. The first week rebuilt logic design from the ground up, so nobody got left behind.'
+        },
+        {
+          name: 'Vikram N.', role: 'Co-founder, chip startup', stars: 5,
+          quote: 'Our team needed one shared understanding of the ISA and the memory system. This got us there faster than reading specs alone.'
+        },
+        {
+          name: 'Fatima Z.', role: 'PhD researcher, computer architecture', stars: 5,
+          quote: 'I left with a capstone core I can put on GitHub and walk through in an interview. That is exactly what I wanted from it.'
+        }
+      ];
+
+      var DURATION = 6500;   // ms each testimonial stays before auto-advancing
+      var PAL = [['#2563EB', '#0EA5E9'], ['#4F46E5', '#2563EB'], ['#0D9488', '#0EA5E9'], ['#4F46E5', '#0EA5E9']];
+
+      var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      var n = DATA.length, active = 0;
+
+      var carousel = root.querySelector('#tmCarousel');
+      var stage = root.querySelector('#tmStage');
+      var cardsEl = root.querySelector('#tmCards');
+      var prog = root.querySelector('#tmProgress');
+      var sparks = root.querySelector('#tmSparks');
+      root.style.setProperty('--tm-dur', DURATION + 'ms');
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
         });
-      }, { threshold: 0.3 }).observe(root);
-    } else {
-      f.off = false; root.classList.add('tm-ready'); sync();
-    }
- 
-    /* ---------- cursor tilt + sheen (desktop only) ---------- */
-    if (!reduce && window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-      var raf = 0, px = 0, py = 0;
-      root.addEventListener('pointermove', function (e) {
-        if (e.pointerType !== 'mouse') return;
-        px = e.clientX; py = e.clientY;
-        if (raf) return;
-        raf = requestAnimationFrame(function () {
-          raf = 0;
-          var r = stage.getBoundingClientRect();
-          if (!r.width) return;
-          var x = (px - r.left) / r.width, y = (py - r.top) / r.height;
-          var dx = Math.max(-1, Math.min(1, (x - .5) * 2)), dy = Math.max(-1, Math.min(1, (y - .5) * 2));
-          stage.style.setProperty('--ry', (dx * 5).toFixed(2) + 'deg');
-          stage.style.setProperty('--rx', (-dy * 4).toFixed(2) + 'deg');
-          stage.style.setProperty('--mx', (Math.max(0, Math.min(1, x)) * 100).toFixed(1) + '%');
-          stage.style.setProperty('--my', (Math.max(0, Math.min(1, y)) * 100).toFixed(1) + '%');
-        });
-      });
-      root.addEventListener('pointerleave', function () {
-        stage.style.setProperty('--rx', '0deg');
-        stage.style.setProperty('--ry', '0deg');
-      });
-    }
- 
-    /* ---------- twinkling star field (random every load) ---------- */
-    if (sparks) {
-      var h = '';
-      for (var k = 0; k < 34; k++) {
-        var sz = (Math.random() * 2 + 1).toFixed(1);
-        h += '<i class="tm-spark" style="left:' + (Math.random() * 100).toFixed(1) + '%;top:' + (Math.random() * 100).toFixed(1) +
-          '%;width:' + sz + 'px;height:' + sz + 'px;--d:' + (3 + Math.random() * 5).toFixed(1) + 's;--dl:' +
-          (-Math.random() * 6).toFixed(1) + 's;--o:' + (0.4 + Math.random() * 0.6).toFixed(2) + '"></i>';
       }
-      sparks.innerHTML = h;
-    }
- 
-    sync();
-    layout();
-  })();
+      function initials(name) {
+        var p = name.replace(/\./g, '').trim().split(/\s+/);
+        return ((p[0] || '').charAt(0) + (p[1] || '').charAt(0)).toUpperCase();
+      }
+
+      /* ---------- build ---------- */
+      var cardsHTML = '', segsHTML = '';
+      DATA.forEach(function (t, i) {
+        var words = ('\u201C' + t.quote + '\u201D').split(' ');
+        var q = words.map(function (w, k) {
+          return '<span class="tm-w" style="--i:' + k + '">' + esc(w) + '</span>';
+        }).join(' ');
+        var c = PAL[i % PAL.length], stars = '', total = Math.max(1, Math.min(5, t.stars || 5));
+        for (var s = 0; s < total; s++) stars += '<svg class="tm-star" style="--s:' + s + '" viewBox="0 0 24 24" aria-hidden="true"><use href="#tmStar"/></svg>';
+
+        cardsHTML +=
+          '<figure class="tm-card" data-pos="far-r" aria-hidden="true">' +
+          '<blockquote class="tm-quote">' + q + '</blockquote>' +
+          '<figcaption class="tm-meta">' +
+          '<div class="tm-who"><span class="tm-avatar" style="--a:' + c[0] + ';--b:' + c[1] + '" aria-hidden="true">' + esc(initials(t.name)) + '</span>' +
+          '<span class="tm-id"><span class="tm-name">' + esc(t.name) + '</span><span class="tm-role">' + esc(t.role) + '</span></span></div>' +
+          '<div class="tm-rating" role="img" aria-label="' + total + ' out of 5 stars">' + stars + '</div>' +
+          '</figcaption></figure>';
+
+        segsHTML += '<button class="tm-seg" type="button" data-i="' + i + '" aria-label="Show testimonial ' + (i + 1) + ' of ' + n + '"><span class="tm-fill"></span></button>';
+      });
+      cardsEl.innerHTML = cardsHTML;
+      prog.innerHTML = segsHTML;
+
+      var cards = [].slice.call(cardsEl.children);
+      var segs = [].slice.call(prog.children);
+
+      /* ---------- state → DOM ---------- */
+      function layout() {
+        cards.forEach(function (el, i) {
+          var off = ((i - active) % n + n) % n;
+          if (off > n / 2) off -= n;
+          var pos = off === 0 ? '0' : off === 1 ? '1' : off === -1 ? '-1' : off > 1 ? 'far-r' : 'far-l';
+          el.setAttribute('data-pos', pos);
+          el.classList.toggle('is-active', off === 0);
+          el.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
+        });
+        segs.forEach(function (s, k) {
+          s.classList.toggle('active', k === active);
+          s.classList.toggle('done', k < active);
+          if (k === active) s.setAttribute('aria-current', 'true'); else s.removeAttribute('aria-current');
+        });
+      }
+      function nudge() {
+        if (reduce) return;
+        stage.classList.remove('tm-nudge');
+        void stage.offsetWidth;            // restart the frame animation
+        stage.classList.add('tm-nudge');
+      }
+      function go(i, manual) {
+        i = (i + n) % n;
+        if (i === active) return;
+        active = i;
+        cardsEl.setAttribute('aria-live', manual ? 'polite' : 'off');
+        layout();
+        nudge();
+      }
+
+      /* ---------- controls ---------- */
+      root.querySelector('.tm-prev').addEventListener('click', function () { go(active - 1, true); });
+      root.querySelector('.tm-next').addEventListener('click', function () { go(active + 1, true); });
+      prog.addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('.tm-seg');
+        if (b) go(parseInt(b.getAttribute('data-i'), 10), true);
+      });
+      // the active progress bar IS the autoplay timer: when it finishes, advance
+      prog.addEventListener('animationend', function (e) {
+        if (e.animationName === 'tmFill') go(active + 1, false);
+      });
+      stage.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { go(active + 1, true); e.preventDefault(); }
+        else if (e.key === 'ArrowLeft') { go(active - 1, true); e.preventDefault(); }
+      });
+
+      // swipe / drag
+      var sx = null, sy = 0;
+      stage.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        sx = e.clientX; sy = e.clientY;
+      });
+      stage.addEventListener('pointerup', function (e) {
+        if (sx === null) return;
+        var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) go(active + (dx < 0 ? 1 : -1), true);
+      });
+      stage.addEventListener('pointercancel', function () { sx = null; });
+
+      /* ---------- autoplay pause rules ---------- */
+      var f = { hover: false, focus: false, off: true, hid: document.hidden };
+      function sync() { root.classList.toggle('tm-paused', f.hover || f.focus || f.off || f.hid); }
+      carousel.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { f.hover = true; sync(); } });
+      carousel.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { f.hover = false; sync(); } });
+      root.addEventListener('focusin', function (e) {
+        try { if (e.target.matches(':focus-visible')) f.focus = true; } catch (_) { }
+        sync();
+      });
+      root.addEventListener('focusout', function () { f.focus = false; sync(); });
+      document.addEventListener('visibilitychange', function () { f.hid = document.hidden; sync(); });
+
+      // start (and first-play the entrance) only when the section is on screen
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            f.off = !en.isIntersecting;
+            if (en.isIntersecting) root.classList.add('tm-ready');
+            sync();
+          });
+        }, { threshold: 0.3 }).observe(root);
+      } else {
+        f.off = false; root.classList.add('tm-ready'); sync();
+      }
+
+      /* ---------- cursor tilt + sheen (desktop only) ---------- */
+      if (!reduce && window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        var raf = 0, px = 0, py = 0;
+        root.addEventListener('pointermove', function (e) {
+          if (e.pointerType !== 'mouse') return;
+          px = e.clientX; py = e.clientY;
+          if (raf) return;
+          raf = requestAnimationFrame(function () {
+            raf = 0;
+            var r = stage.getBoundingClientRect();
+            if (!r.width) return;
+            var x = (px - r.left) / r.width, y = (py - r.top) / r.height;
+            var dx = Math.max(-1, Math.min(1, (x - .5) * 2)), dy = Math.max(-1, Math.min(1, (y - .5) * 2));
+            stage.style.setProperty('--ry', (dx * 5).toFixed(2) + 'deg');
+            stage.style.setProperty('--rx', (-dy * 4).toFixed(2) + 'deg');
+            stage.style.setProperty('--mx', (Math.max(0, Math.min(1, x)) * 100).toFixed(1) + '%');
+            stage.style.setProperty('--my', (Math.max(0, Math.min(1, y)) * 100).toFixed(1) + '%');
+          });
+        });
+        root.addEventListener('pointerleave', function () {
+          stage.style.setProperty('--rx', '0deg');
+          stage.style.setProperty('--ry', '0deg');
+        });
+      }
+
+      /* ---------- twinkling star field (random every load) ---------- */
+      if (sparks) {
+        var h = '';
+        for (var k = 0; k < 34; k++) {
+          var sz = (Math.random() * 2 + 1).toFixed(1);
+          h += '<i class="tm-spark" style="left:' + (Math.random() * 100).toFixed(1) + '%;top:' + (Math.random() * 100).toFixed(1) +
+            '%;width:' + sz + 'px;height:' + sz + 'px;--d:' + (3 + Math.random() * 5).toFixed(1) + 's;--dl:' +
+            (-Math.random() * 6).toFixed(1) + 's;--o:' + (0.4 + Math.random() * 0.6).toFixed(2) + '"></i>';
+        }
+        sparks.innerHTML = h;
+      }
+
+      sync();
+      layout();
+    })();
   </script>
 </body>
 
