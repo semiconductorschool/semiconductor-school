@@ -216,6 +216,31 @@
       background: rgba(255, 255, 255, .09)
     }
 
+    nav ul li a.active_pay {
+      color: white;
+      font-weight: 500;
+      background: var(--saffron);
+      border-radius: 60px;
+    }
+
+    nav ul li a.active_pay:hover {
+      background: #1D4ED8;
+      transform: translateY(-1px)
+    }
+ @media (max-width:600px) {
+      nav ul li a.active_pay {
+        display: block;
+        margin: 0px 20px;
+        padding: 12px 20px;
+        background: var(--saffron);
+        border-radius: 999px;
+        text-align: center;
+        text-decoration: none;
+        font-family: var(--display);
+        font-weight: 600;
+      }
+    }
+
     .nav-apply {
       font-family: var(--display);
       font-size: 12px;
@@ -5449,7 +5474,7 @@
       <li><a id="nav-schedule" onclick="switchPage('schedule')">Schedule</a></li>
       <li><a id="nav-grasp" onclick="switchPage('grasp')">GRASP</a></li>
       <li><a id="nav-adapt" onclick="switchPage('adapt')">ADAPT</a></li>
-      <!-- <li><a id="nav-payment" onclick="switchPage('payment')">Pay Fees</a></li> -->
+      <!-- <li><a id="nav-payment" class="active_pay" onclick="switchPage('payment')">Pay Fees</a></li> -->
       <a class="mobile-apply js-apply-link" href="#" target="_blank" rel="noopener noreferrer">
         Apply for RISE →
       </a>

@@ -198,15 +198,31 @@
       color: rgba(255, 255, 255, 0.9);
       background: rgba(255, 255, 255, 0.09)
     }
+
     nav ul li a.active_pay {
       color: white;
       font-weight: 500;
-      background: var(--saffron); 
-        border-radius: 60px;
+      background: var(--saffron);
+      border-radius: 60px;
     }
+
     nav ul li a.active_pay:hover {
       background: #1D4ED8;
       transform: translateY(-1px)
+    }
+
+    @media (max-width:600px) {
+      nav ul li a.active_pay {
+        display: block;
+        margin: 0px 20px;
+        padding: 12px 20px;
+        background: var(--saffron);
+        border-radius: 999px;
+        text-align: center;
+        text-decoration: none;
+        font-family: var(--display);
+        font-weight: 600;
+      }
     }
 
     .nav-apply {
@@ -232,7 +248,7 @@
     .mobile-apply {
       display: none
     }
-    
+
 
     .page {
       display: none
@@ -1684,6 +1700,8 @@
 
     }
 
+
+
     .track-eyebrow {
       font-family: var(--mono);
       font-size: 10px;
@@ -2721,6 +2739,7 @@
           display: block;
         }
       }
+
 
       nav ul li a {
         display: block;
